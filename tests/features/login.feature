@@ -3,9 +3,11 @@ Feature: Login
   As a user
   I want to access the OpenEMR dashboard
 
+  Background:
+    Given I have browser with openemr application
+
 
   Scenario Outline: Valid Login
-    Given I have browser with openemr application
     When I enter username as "<username>"
     And I enter password as "<password>"
     And I select language as "<language>"
@@ -19,7 +21,6 @@ Feature: Login
 
 
   Scenario: Invalid Login
-    Given I have browser with openemr application
     When I enter username as "john"
     And I enter password as "john123"
     And I select language as "English (Indian)"
