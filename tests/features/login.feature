@@ -4,13 +4,19 @@ Feature: Login
   I want to access the OpenEMR dashboard
 
 
-  Scenario: Valid Login
+  Scenario Outline: Valid Login
     Given I have browser with openemr application
-    When I enter username as "admin"
-    And I enter password as "pass"
-    And I select language as "English (Indian)"
+    When I enter username as "<username>"
+    And I enter password as "<password>"
+    And I select language as "<language>"
     And I click on login
-    Then I should get access to the portal with title as "OpenEMR"
+    Then I should get access to the portal with title as "<expected_title>"
+    Examples:
+      | username   | password   | language         | expected_title |
+      | physician  | physician  | English (Indian) | OpenEMR        |
+      | admin      | pass       | English (Indian) | OpenEMR        |
+      | accountant | accountant | English (Indian) | OpenEMR        |
+
 
   Scenario: Invalid Login
     Given I have browser with openemr application
