@@ -39,9 +39,9 @@ def step_impl(context, text):
     assert_that(text).is_equal_to(context.driver.title)
 
 
-@then(u'I should not get access to portal with error as "{expected_error}"')
-def step_impl(context,expected_error):
+@then(u'I should not get access to portal with error as "{text}"')
+def step_impl(context,text):
     actual_error=context.driver.find_element(By.XPATH, "// *[contains(text(), 'Invalid')]").text
-    assert_that(actual_error).contains(expected_error)
+    assert_that(actual_error).contains(text)
 
 
