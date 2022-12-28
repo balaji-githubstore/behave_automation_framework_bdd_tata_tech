@@ -8,7 +8,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 @when(u'I click on patient menu')
 def step_impl(context):
-    context.driver.find_element(By.XPATH, "//div[text()='Patient']").click()
+    # context.driver.find_element(By.XPATH, "//div[text()='Patient']").click()
+    context.main_page.click_on_patient()
 
 
 @when(u'I click on new-search menu')

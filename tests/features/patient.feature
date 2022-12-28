@@ -26,7 +26,7 @@ Feature: Patient
     Examples:
       | username | password | language         | fname | lname | licence_id | dob        | gender | expected_patient_record              | expected_alert |
       | admin    | pass     | English (Indian) | John  | Wick  | Yes        | 2022-12-27 | Female | Medical Record Dashboard - John Wick | Tobacco        |
-      | admin    | pass     | English (Indian) | Jack  | Ken   | 8788dfs    | 2022-12-28 | Male   | Medical Record Dashboard - Jack Ken  | Tobacco        |
+#      | admin    | pass     | English (Indian) | Jack  | Ken   | 8788dfs    | 2022-12-28 | Male   | Medical Record Dashboard - Jack Ken  | Tobacco        |
 
 
 #  @addpatient

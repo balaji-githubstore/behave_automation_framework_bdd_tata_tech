@@ -30,43 +30,42 @@ Feature: Patient # tests/features/patient.feature:2
   I would like to add, edit, delete the patient records
   @addpatient
   Scenario Outline: Add Valid Patient -- @1.1                                            # tests/features/patient.feature:28
-    Given I have browser with openemr application                                        # tests/features/steps/login_steps.py:8
-    When I enter username as "admin"                                                     # tests/features/steps/login_steps.py:16
-    And I enter password as "pass"                                                       # tests/features/steps/login_steps.py:21
-    And I select language as "English (Indian)"                                          # tests/features/steps/login_steps.py:26
-    And I click on login                                                                 # tests/features/steps/login_steps.py:32
+    Given I have browser with openemr application                                        # tests/features/steps/login_steps.py:20
+    When I enter username as "admin"                                                     # tests/features/steps/login_steps.py:29
+    And I enter password as "pass"                                                       # tests/features/steps/login_steps.py:35
+    And I select language as "English (Indian)"                                          # tests/features/steps/login_steps.py:41
+    And I click on login                                                                 # tests/features/steps/login_steps.py:47
     And I click on patient menu                                                          # tests/features/steps/patient_steps.py:9
-    And I click on new-search menu                                                       # tests/features/steps/patient_steps.py:14
-    And I fill the add patient form                                                      # tests/features/steps/patient_steps.py:19
-      | firstname | lastname | dob        | gender | licence_id |
-      | John      | Wick     | 2022-12-27 | Female | 7878ff     |
-    And I click on create new patient                                                    # tests/features/steps/patient_steps.py:35
-    And I click on confirm create new patient                                            # tests/features/steps/patient_steps.py:41
-    And I store the alert text and handle it                                             # tests/features/steps/patient_steps.py:48
-    And I close hbd popup if available                                                   # tests/features/steps/patient_steps.py:57
-    Then I should get the added patient detail as "Medical Record Dashboard - John Wick" # tests/features/steps/patient_steps.py:63
-    And I should validate the alert text contains "Tobacco"                              # tests/features/steps/patient_steps.py:71
+      Traceback (most recent call last):
+        File "C:\Program Files\Python310\lib\site-packages\behave\model.py", line 1329, in run
+          match.run(runner.context)
+        File "C:\Program Files\Python310\lib\site-packages\behave\matchers.py", line 98, in run
+          self.func(context, *args, **kwargs)
+        File "tests\features\steps\patient_steps.py", line 12, in step_impl
+          context.main_page.click_on_patient()
+        File "C:\Program Files\Python310\lib\site-packages\behave\runner.py", line 321, in __getattr__
+          raise AttributeError(msg)
+      AttributeError: 'Context' object has no attribute 'main_page'
+      
+      Captured stdout:
+      <selenium.webdriver.chrome.webdriver.WebDriver (session="c9aa230e30046eb2bc0290e8e28d1c5f")>
 
-  @addpatient
-  Scenario Outline: Add Valid Patient -- @1.2                                           # tests/features/patient.feature:29
-    Given I have browser with openemr application                                       # tests/features/steps/login_steps.py:8
-    When I enter username as "admin"                                                    # tests/features/steps/login_steps.py:16
-    And I enter password as "pass"                                                      # tests/features/steps/login_steps.py:21
-    And I select language as "English (Indian)"                                         # tests/features/steps/login_steps.py:26
-    And I click on login                                                                # tests/features/steps/login_steps.py:32
-    And I click on patient menu                                                         # tests/features/steps/patient_steps.py:9
-    And I click on new-search menu                                                      # tests/features/steps/patient_steps.py:14
-    And I fill the add patient form                                                     # tests/features/steps/patient_steps.py:19
+    And I click on new-search menu                                                       # None
+    And I fill the add patient form                                                      # None
       | firstname | lastname | dob        | gender | licence_id |
-      | Jack      | Ken      | 2022-12-28 | Male   | 8788dfs    |
-    And I click on create new patient                                                   # tests/features/steps/patient_steps.py:35
-    And I click on confirm create new patient                                           # tests/features/steps/patient_steps.py:41
-    And I store the alert text and handle it                                            # tests/features/steps/patient_steps.py:48
-    And I close hbd popup if available                                                  # tests/features/steps/patient_steps.py:57
-    Then I should get the added patient detail as "Medical Record Dashboard - Jack Ken" # tests/features/steps/patient_steps.py:63
-    And I should validate the alert text contains "Tobacco"                             # tests/features/steps/patient_steps.py:71
+      | John      | Wick     | 2022-12-27 | Female | Yes        |
+    And I click on create new patient                                                    # None
+    And I click on confirm create new patient                                            # None
+    And I store the alert text and handle it                                             # None
+    And I close hbd popup if available                                                   # None
+    Then I should get the added patient detail as "Medical Record Dashboard - John Wick" # None
+    And I should validate the alert text contains "Tobacco"                              # None
 
-1 feature passed, 0 failed, 1 skipped
-2 scenarios passed, 0 failed, 2 skipped
-28 steps passed, 0 failed, 12 skipped, 0 undefined
-Took 0m54.120s
+
+Failing scenarios:
+  tests/features/patient.feature:28  Add Valid Patient -- @1.1 
+
+0 features passed, 1 failed, 1 skipped
+0 scenarios passed, 1 failed, 2 skipped
+5 steps passed, 1 failed, 20 skipped, 0 undefined
+Took 0m9.743s
