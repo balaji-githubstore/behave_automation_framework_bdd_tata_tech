@@ -1,3 +1,4 @@
+@login
 Feature: Login
   In order to maintain the patient, doctors records
   As a user
@@ -6,7 +7,7 @@ Feature: Login
   Background:
     Given I have browser with openemr application
 
-
+  @valid @smoke
   Scenario Outline: Valid Login
     When I enter username as "<username>"
     And I enter password as "<password>"
@@ -16,10 +17,10 @@ Feature: Login
     Examples:
       | username   | password   | language         | expected_title |
       | physician  | physician  | English (Indian) | OpenEMR        |
-      | admin      | pass       | English (Indian) | OpenEMR        |
-      | accountant | accountant | English (Indian) | OpenEMR        |
+#      | admin      | pass       | English (Indian) | OpenEMR        |
+#      | accountant | accountant | English (Indian) | OpenEMR        |
 
-
+  @invalid
   Scenario: Invalid Login
     When I enter username as "john"
     And I enter password as "john123"

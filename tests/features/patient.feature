@@ -1,8 +1,10 @@
+@patient
 Feature: Patient
   In order to manage the patient details
   As an admin
   I would like to add, edit, delete the patient records
 
+  @addpatient
   Scenario: Add Valid Patient
     Given I have browser with openemr application
     When I enter username as "admin"
