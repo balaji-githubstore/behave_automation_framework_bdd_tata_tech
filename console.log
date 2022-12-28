@@ -1,0 +1,72 @@
+@login
+Feature: Login # tests/features/login.feature:2
+  In order to maintain the patient, doctors records
+  As a user
+  I want to access the OpenEMR dashboard
+  Background:   # tests/features/login.feature:7
+
+  @valid @smoke
+  Scenario Outline: Valid Login -- @1.1                            # tests/features/login.feature:19
+    Given I have browser with openemr application                  # None
+    When I enter username as "physician"                           # None
+    And I enter password as "physician"                            # None
+    And I select language as "English (Indian)"                    # None
+    And I click on login                                           # None
+    Then I should get access to the portal with title as "OpenEMR" # None
+
+  @invalid
+  Scenario: Invalid Login                                                               # tests/features/login.feature:24
+    Given I have browser with openemr application                                       # None
+    When I enter username as "john"                                                     # None
+    And I enter password as "john123"                                                   # None
+    And I select language as "English (Indian)"                                         # None
+    And I click on login                                                                # None
+    Then I should not get access to portal with error as "Invalid username or password" # None
+
+@patient
+Feature: Patient # tests/features/patient.feature:2
+  In order to manage the patient details
+  As an admin
+  I would like to add, edit, delete the patient records
+  @addpatient
+  Scenario Outline: Add Valid Patient -- @1.1                                            # tests/features/patient.feature:28
+    Given I have browser with openemr application                                        # tests/features/steps/login_steps.py:8
+    When I enter username as "admin"                                                     # tests/features/steps/login_steps.py:16
+    And I enter password as "pass"                                                       # tests/features/steps/login_steps.py:21
+    And I select language as "English (Indian)"                                          # tests/features/steps/login_steps.py:26
+    And I click on login                                                                 # tests/features/steps/login_steps.py:32
+    And I click on patient menu                                                          # tests/features/steps/patient_steps.py:9
+    And I click on new-search menu                                                       # tests/features/steps/patient_steps.py:14
+    And I fill the add patient form                                                      # tests/features/steps/patient_steps.py:19
+      | firstname | lastname | dob        | gender | licence_id |
+      | John      | Wick     | 2022-12-27 | Female | 7878ff     |
+    And I click on create new patient                                                    # tests/features/steps/patient_steps.py:35
+    And I click on confirm create new patient                                            # tests/features/steps/patient_steps.py:41
+    And I store the alert text and handle it                                             # tests/features/steps/patient_steps.py:48
+    And I close hbd popup if available                                                   # tests/features/steps/patient_steps.py:57
+    Then I should get the added patient detail as "Medical Record Dashboard - John Wick" # tests/features/steps/patient_steps.py:63
+    And I should validate the alert text contains "Tobacco"                              # tests/features/steps/patient_steps.py:71
+
+  @addpatient
+  Scenario Outline: Add Valid Patient -- @1.2                                           # tests/features/patient.feature:29
+    Given I have browser with openemr application                                       # tests/features/steps/login_steps.py:8
+    When I enter username as "admin"                                                    # tests/features/steps/login_steps.py:16
+    And I enter password as "pass"                                                      # tests/features/steps/login_steps.py:21
+    And I select language as "English (Indian)"                                         # tests/features/steps/login_steps.py:26
+    And I click on login                                                                # tests/features/steps/login_steps.py:32
+    And I click on patient menu                                                         # tests/features/steps/patient_steps.py:9
+    And I click on new-search menu                                                      # tests/features/steps/patient_steps.py:14
+    And I fill the add patient form                                                     # tests/features/steps/patient_steps.py:19
+      | firstname | lastname | dob        | gender | licence_id |
+      | Jack      | Ken      | 2022-12-28 | Male   | 8788dfs    |
+    And I click on create new patient                                                   # tests/features/steps/patient_steps.py:35
+    And I click on confirm create new patient                                           # tests/features/steps/patient_steps.py:41
+    And I store the alert text and handle it                                            # tests/features/steps/patient_steps.py:48
+    And I close hbd popup if available                                                  # tests/features/steps/patient_steps.py:57
+    Then I should get the added patient detail as "Medical Record Dashboard - Jack Ken" # tests/features/steps/patient_steps.py:63
+    And I should validate the alert text contains "Tobacco"                             # tests/features/steps/patient_steps.py:71
+
+1 feature passed, 0 failed, 1 skipped
+2 scenarios passed, 0 failed, 2 skipped
+28 steps passed, 0 failed, 12 skipped, 0 undefined
+Took 0m54.120s

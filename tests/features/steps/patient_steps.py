@@ -29,6 +29,15 @@ def step_impl(context):
     select_gender = Select(context.driver.find_element(By.XPATH, "//select[@id='form_sex']"))
     select_gender.select_by_visible_text(context.table[0]["gender"])
 
+    if str(context.table[0]["licence_id"]) != 'NA':
+        context.driver.find_element(By.XPATH, "//input[@id='form_drivers_license']").send_keys(
+            context.table[0]["licence_id"])
+
+    if str(context.table[0]["licence_id"]) != 'Yes':
+        context.driver.find_element(By.XPATH, "//input[@id='form_drivers_license']").click()
+    # else:
+    #     context.driver.find_element(By.XPATH, "//input[@id='form_drivers_license']").click()
+
 
 @when(u'I click on create new patient')
 def step_impl(context):
