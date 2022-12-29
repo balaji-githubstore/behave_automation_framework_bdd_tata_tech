@@ -1,0 +1,27 @@
+<testsuite name="patient.Patient" tests="1" errors="0" failures="0" skipped="1" time="0.0" timestamp="2022-12-29T12:33:51.617021" hostname="DESKTOP-R6BD6UD"><testcase classname="patient.Patient" name="Add Valid Patient -- @1.1 " status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @addpatient
+  Scenario Outline: Add Valid Patient -- @1.1 
+    Given I have browser with openemr application ... skipped in 0.000s
+    When I enter username as "admin" ... skipped in 0.000s
+    And I enter password as "pass" ... skipped in 0.000s
+    And I select language as "English (Indian)" ... skipped in 0.000s
+    And I click on login ... skipped in 0.000s
+    And I click on patient menu ... skipped in 0.000s
+    And I click on new-search menu ... skipped in 0.000s
+    And I fill the add patient form ... skipped in 0.000s
+      | firstname | lastname | dob        | gender | licence_id |
+      | John      | Wick     | 2022-12-27 | Female | Yes        |
+    And I click on create new patient ... skipped in 0.000s
+    And I click on confirm create new patient ... skipped in 0.000s
+    And I store the alert text and handle it ... skipped in 0.000s
+    And I close hbd popup if available ... skipped in 0.000s
+    Then I should get the added patient detail as "Medical Record Dashboard - John Wick" ... skipped in 0.000s
+    And I should validate the alert text contains "Tobacco" ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
